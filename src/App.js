@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { LoginForm } from "./containers/LoginForm";
 import { TaskForm } from "./containers/TaskForm";
-import { Task } from "./components/Task";
+import { Task } from "./containers/Task";
 import { AppContext } from "./contexts/AppContext";
 
 export function App() {
@@ -12,12 +12,7 @@ export function App() {
       <LoginForm onLogin={appContext.logIn} />
       <TaskForm onAdd={appContext.addTask} />
       {appContext.tasks.map((task) => (
-        <Task
-          key={task.id}
-          isDone={task.isDone}
-          onCheck={() => appContext.checkTask(task.id)}
-          onDelete={() => appContext.deleteTask(task.id)}
-        >
+        <Task key={task.id} id={task.id} isDone={task.isDone}>
           {task.text}
         </Task>
       ))}
