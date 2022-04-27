@@ -10,12 +10,15 @@ export function App() {
   const handleLogin = (data) => setUser({ username: data.username });
 
   const handleAdd = (data) =>
-    setTasks((state) => [...state, { text: data.task, isDone: false }]);
+    setTasks((state) => [
+      ...state,
+      { id: Date.now(), text: data.task, isDone: false },
+    ]);
 
-  const handleCheck = (text) => {
+  const handleCheck = (id) => {
     setTasks((state) =>
       state.map((task) => {
-        if (task.text === text) {
+        if (task.id === id) {
           return { ...task, isDone: !task.isDone };
         }
 
@@ -24,20 +27,25 @@ export function App() {
     );
   };
 
-  const handleDelete = (text) =>
-    setTasks((state) => state.filter((task) => task.text !== text));
+  const handleDelete = (id) =>
+    setTasks((state) => state.filter((task) => task.id !== id));
+
+  let userInfo = null;
+  if (user !== null) userInfo = <div>Hi {user.username}!</div>;
+
+  console.log(tasks);
 
   return (
     <div>
-      {user !== null && <div>Hi {user.username}!</div>}
+      {userInfo}
       <LoginForm onLogin={handleLogin} />
       <TaskForm onAdd={handleAdd} />
       {tasks.map((task) => (
         <Task
-          key={task.text}
+          key={task.id}
           isDone={task.isDone}
-          onCheck={() => handleCheck(task.text)}
-          onDelete={() => handleDelete(task.text)}
+          onCheck={() => handleCheck(task.id)}
+          onDelete={() => handleDelete(task.id)}
         >
           {task.text}
         </Task>
