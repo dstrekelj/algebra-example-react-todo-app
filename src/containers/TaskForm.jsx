@@ -1,7 +1,9 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { TaskForm as Component } from "../components/TaskForm";
+import { AppContext } from "../contexts/AppContext";
 
-export function TaskForm(props) {
+export function TaskForm() {
+  const appContext = useContext(AppContext);
   const [state, setState] = useState({});
 
   const handleChange = (event) => {
@@ -16,7 +18,7 @@ export function TaskForm(props) {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    props.onAdd(state);
+    appContext.addTask(state);
   };
 
   return <Component onSubmit={handleSubmit} onChange={handleChange} />;

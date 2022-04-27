@@ -1,7 +1,9 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { LoginForm as Component } from "../components/LoginForm";
+import { AppContext } from "../contexts/AppContext";
 
-export function LoginForm(props) {
+export function LoginForm() {
+  const appContext = useContext(AppContext);
   const [state, setState] = useState({});
 
   const handleChange = (event) => {
@@ -16,7 +18,7 @@ export function LoginForm(props) {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    props.onLogin(state);
+    appContext.logIn(state);
   };
 
   return <Component onSubmit={handleSubmit} onChange={handleChange} />;

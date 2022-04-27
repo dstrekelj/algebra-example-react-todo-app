@@ -9,8 +9,8 @@ export function App() {
 
   return (
     <div>
-      <LoginForm onLogin={appContext.logIn} />
-      <TaskForm onAdd={appContext.addTask} />
+      <LoginForm />
+      <TaskForm />
       {appContext.tasks.map((task) => (
         <Task key={task.id} id={task.id} isDone={task.isDone}>
           {task.text}
