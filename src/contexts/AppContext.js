@@ -52,7 +52,7 @@ export function AppProvider(props) {
       localStorage.getItem("note-app-" + user.username) !== null
     ) {
       const storedTasks = JSON.parse(
-        localStorage.getItem(user.username),
+        localStorage.getItem("note-app-" + user.username),
       );
       setTasks(storedTasks);
     }
