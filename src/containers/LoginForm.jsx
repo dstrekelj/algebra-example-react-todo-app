@@ -2,7 +2,7 @@ import { useContext, useState } from "react";
 import { LoginForm as Component } from "../components/LoginForm";
 import { AppContext } from "../contexts/AppContext";
 
-export function LoginForm() {
+export function LoginForm(props) {
   const appContext = useContext(AppContext);
   const [state, setState] = useState({});
 
