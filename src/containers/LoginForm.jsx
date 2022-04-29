@@ -1,9 +1,9 @@
 import { useContext, useState } from "react";
 import { LoginForm as Component } from "../components/LoginForm";
-import { AppContext } from "../contexts/AppContext";
+import { ReduxAppContext } from "../contexts/ReduxAppContext";
 
 export function LoginForm(props) {
-  const appContext = useContext(AppContext);
+  const appContext = useContext(ReduxAppContext);
   const [state, setState] = useState({});
 
   const handleChange = (event) => {

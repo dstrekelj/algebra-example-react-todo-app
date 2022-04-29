@@ -2,11 +2,11 @@ import { useContext, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { TaskForm } from "../containers/TaskForm";
 import { Task } from "../containers/Task";
-import { AppContext } from "../contexts/AppContext";
+import { ReduxAppContext } from "../contexts/ReduxAppContext";
 
 export function TasksPage() {
   const navigate = useNavigate();
-  const appContext = useContext(AppContext);
+  const appContext = useContext(ReduxAppContext);
 
   useEffect(() => {
     if (!appContext.isLoggedIn()) {

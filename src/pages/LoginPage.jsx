@@ -1,11 +1,11 @@
 import { useContext, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { LoginForm } from "../containers/LoginForm";
-import { AppContext } from "../contexts/AppContext";
+import { ReduxAppContext } from "../contexts/ReduxAppContext";
 
 export function LoginPage() {
   const navigate = useNavigate();
-  const appContext = useContext(AppContext);
+  const appContext = useContext(ReduxAppContext);
 
   useEffect(() => {
     if (appContext.isLoggedIn()) {

@@ -1,9 +1,9 @@
 import { useContext, useState } from "react";
 import { TaskForm as Component } from "../components/TaskForm";
-import { AppContext } from "../contexts/AppContext";
+import { ReduxAppContext } from "../contexts/ReduxAppContext";
 
 export function TaskForm() {
-  const appContext = useContext(AppContext);
+  const appContext = useContext(ReduxAppContext);
   const [state, setState] = useState({});
 
   const handleChange = (event) => {
